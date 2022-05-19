@@ -1,6 +1,9 @@
 <template>
   <section>
-    <div class="container">
+    <div v-if="loading" class="container">
+      <AppLoading />
+    </div>
+    <div v-else class="container">
       <div class="row row-cols-5">
         <AppCardThumb
           v-for="(item, index) in cardsArray"
@@ -15,15 +18,18 @@
 <script>
 import AppCardThumb from "./AppCardThumb.vue";
 import axios from "axios";
+import AppLoading from "./AppLoading.vue";
 
 export default {
   name: "AppMain",
   components: {
     AppCardThumb,
+    AppLoading,
   },
   data: function () {
     return {
       cardsArray: [],
+      loading: true,
     };
   },
   created() {
@@ -31,6 +37,7 @@ export default {
       .get("https://flynn.boolean.careers/exercises/api/array/music")
       .then((response) => {
         this.cardsArray = response.data.response;
+        this.loading = false;
       });
   },
 };
