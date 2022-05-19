@@ -18,20 +18,16 @@ export default {
 
 .header {
   width: 100%;
-  height: 100px;
+  height: 75px;
   display: flex;
   align-items: center;
   color: $primary-text-color;
   background-color: $primary-bg-color;
 
   &__logo {
-    width: 80px;
+    width: 55px;
     padding-left: 0.5rem;
     margin-left: 2rem;
-
-    img {
-      width: 100%;
-    }
   }
 }
 </style>
