@@ -1,7 +1,9 @@
 <template>
   <section>
-    <AppFilter @checkGenre="filterGenre($event)" />
-    <AppFilterBonus @checkArtist="filterArtist($event)" />
+    <AppFilter
+      @checkGenre="filterGenre($event)"
+      @checkArtist="filterArtist($event)"
+    />
     <div v-if="loading" class="container">
       <AppLoading />
     </div>
@@ -21,7 +23,6 @@
 import AppCardThumb from "./AppCardThumb.vue";
 import AppLoading from "./AppLoading.vue";
 import AppFilter from "./AppFilter.vue";
-import AppFilterBonus from "./AppFilterBonus.vue";
 import axios from "axios";
 
 export default {
@@ -30,7 +31,6 @@ export default {
     AppCardThumb,
     AppLoading,
     AppFilter,
-    AppFilterBonus,
   },
   data: function () {
     return {
