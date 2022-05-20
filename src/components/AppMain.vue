@@ -1,6 +1,7 @@
 <template>
   <section>
     <AppFilter @checkGenre="filterGenre($event)" />
+    <AppFilterBonus @checkArtist="filterArtist($event)" />
     <div v-if="loading" class="container">
       <AppLoading />
     </div>
@@ -20,6 +21,7 @@
 import AppCardThumb from "./AppCardThumb.vue";
 import AppLoading from "./AppLoading.vue";
 import AppFilter from "./AppFilter.vue";
+import AppFilterBonus from "./AppFilterBonus.vue";
 import axios from "axios";
 
 export default {
@@ -28,12 +30,14 @@ export default {
     AppCardThumb,
     AppLoading,
     AppFilter,
+    AppFilterBonus,
   },
   data: function () {
     return {
       cardsArray: [],
       loading: true,
       genre: "",
+      author: "",
     };
   },
   created() {
@@ -47,13 +51,20 @@ export default {
   methods: {
     filterGenre(event) {
       this.genre = event;
-      console.log(this.genre);
+      // console.log(this.genre);
+    },
+    filterArtist(event) {
+      this.author = event;
+      // console.log(this.artist);
     },
   },
   computed: {
     filteredArray() {
       const filteredArray = this.cardsArray.filter((e) => {
-        return e.genre.toLowerCase().includes(this.genre);
+        return (
+          e.genre.toLowerCase().includes(this.genre) &&
+          e.author.toLowerCase().includes(this.author)
+        );
       });
       return filteredArray;
     },

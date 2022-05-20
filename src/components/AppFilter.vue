@@ -18,6 +18,7 @@
 <script>
 export default {
   name: "AppFilter",
+  props: ["cardObj"],
   data: function () {
     return {
       checkedValue: "",
